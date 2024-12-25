@@ -6,10 +6,14 @@ import "react-toastify/dist/ReactToastify.css";
 const TransactionList = ({ loading }) => {
   const { lorContract, qnuContract, setdata, account } = useWeb3();
   const [transactions, setTransactions] = useState([]);
-  const [buyAmounts, setBuyAmounts] = useState(0);
+  const [buyAmounts, setBuyAmounts] = useState([]);
 
   const handleBuyClick = (id) => {
-    setBuyAmounts(1);
+    setBuyAmounts(buyAmounts => {
+      const newArray = [...buyAmounts];
+      newArray[id] = !newArray[id]; 
+      return newArray;
+    });
   };
   const handleWithdraw = async (id) => {
     try {
@@ -24,7 +28,7 @@ const TransactionList = ({ loading }) => {
 
   };
   const handleBuySubmit = async (id, number, price) => {
-    setBuyAmounts(0);
+    handleBuyClick(id);
     if (isNaN(number) || number <= 0) {
       toast.error("Please enter a valid positive number.");
       return;
@@ -117,7 +121,7 @@ const TransactionList = ({ loading }) => {
                         {Number(transaction?.price?.toString())}
                       </td>
                       <td className="px-6 py-4">
-                        {!buyAmounts ? (
+                        {!buyAmounts[index] ? (
                           <button
                             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
                             onClick={() => handleBuyClick(index)}
