@@ -20,7 +20,7 @@ const SetTokenForm = () => {
   
   const onSubmit = async (data) => {
     if (!signer) {
-      toast.error("Please connect your wallet to proceed.");
+      toast.error("Please connect your wallet to proceed.", {position: "bottom-left"});
       return;
     }
     try {
@@ -30,18 +30,16 @@ const SetTokenForm = () => {
         data.price
       );
       await transaction.wait();
-      toast.success("Token price updated successfully!");
+      toast.success("Token price updated successfully!", {position: "bottom-left"});
     } catch (error) {
-      toast.error(`Failed to update token price: ${error.message}`);
+      toast.error(`Failed to update token price: ${error.message}`, {position: "bottom-left"});
     } finally {
       setLoading(false);
     }
   };
 
   if (!isAdmin()) {
-    toast.warn(
-      "Access Denied: You do not have permission to access this page."
-    );
+    toast.warn("Access Denied: You do not have permission to access this page.", {position: "bottom-left"});
     return (
       <div className="text-center mt-8">
         <p className="text-red-500 font-bold">⛔ Access Denied</p>

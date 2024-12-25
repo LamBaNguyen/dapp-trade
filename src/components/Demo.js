@@ -10,12 +10,12 @@ const Token = () => {
 
   const handleSubmit = async () => {
     if (!signer) {
-      toast.error("Please connect your wallet.");
+      toast.error("Please connect your wallet.", {position: "bottom-left"});
       return;
     }
 
     if (!tokenAddress) {
-      toast.error("Token address is required.");
+      toast.error("Token address is required.", {position: "bottom-left"});
       return;
     }
 
@@ -32,10 +32,10 @@ const Token = () => {
         );
         setdata({lorBalance: balance, symbol: "LOR"});
       }
-      toast.success("Transaction submitted successfully.");
+      toast.success("Transaction submitted successfully.", {position: "bottom-left"});
     } catch (error) {
       console.error("Error submitting transaction:", error);
-      toast.error(`Error submitting transaction: ${error.message}`);
+      toast.error(`Error submitting transaction: ${error.message}`, {position: "bottom-left"});
     } finally {
       setLoading(false);
     }

@@ -32,11 +32,11 @@ const TokenTrade = () => {
   const onSubmit = async (data) => {
     console.log("data onSubmit:", data);
     if (!signer) {
-      toast.error("Please connect your wallet.");
+      toast.error("Please connect your wallet.", {position: "bottom-left"});
       return;
     }
     if (!data) {
-      toast.error("Invalid form data.");
+      toast.error("Invalid form data.", {position: "bottom-left"});
       return;
     }
     try {
@@ -69,10 +69,9 @@ const TokenTrade = () => {
         tokenAmount
       );
       await transaction.wait();
-      toast.success("Create transaction successfully.");
+      toast.success("Create transaction successfully.", {position: "bottom-left"});
     } catch (error) {
-      console.error("Error creating transaction:", error);
-      toast.error(`Error creating transaction: ${error.message}`);
+      toast.error(`Error creating transaction: ${error.message}`, {position: "bottom-left"});
     } finally {
       setLoading(false);
     }
@@ -80,7 +79,7 @@ const TokenTrade = () => {
 
   const handleBuy = async (id, number) => {
     if (!signer || !qnuContract) {
-      toast.error("Please connect your wallet.");
+      toast.error("Please connect your wallet.", {position: "bottom-left"});
       return;
     }
     try {
@@ -89,10 +88,10 @@ const TokenTrade = () => {
       const transaction = await qnuContract.buyTransaction(id, number);
       console.log("After buyTransaction: ", transaction);
       await transaction.wait();
-      toast.success("Buy transaction successfully.");
+      toast.success("Buy transaction successfully.", {position: "bottom-left"});
     } catch (error) {
       console.error("Error buying token:", error);
-      toast.error(`Error buying token: ${error.message}`);
+      toast.error(`Error buying token: ${error.message}`, {position: "bottom-left"});
     } finally {
       setLoading(false);
     }
@@ -100,7 +99,7 @@ const TokenTrade = () => {
 
   const handleWithdraw = async (id) => {
     if (!signer || !qnuContract) {
-      toast.error("Please connect your wallet.");
+      toast.error("Please connect your wallet.", {position: "bottom-left"});
       return;
     }
     try {
@@ -109,10 +108,10 @@ const TokenTrade = () => {
       const transaction = await qnuContract.withDraw(id);
       console.log("After withDraw: ", transaction);
       await transaction.wait();
-      toast.success("Withdraw transaction successfully.");
+      toast.success("Withdraw transaction successfully.", {position: "bottom-left"});
     } catch (error) {
       console.error("Error withdrawing token:", error);
-      toast.error(`Error withdrawing token: ${error.message}`);
+      toast.error(`Error withdrawing token: ${error.message}`, {position: "bottom-left"});
     } finally {
       setLoading(false);
     }

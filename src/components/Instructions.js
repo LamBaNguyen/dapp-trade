@@ -3,7 +3,7 @@ import React from "react";
 
 const intructions = () => {
   return (
-    <div class="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg mt-10 overflow-auto">
+    <div class="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg overflow-auto">
       <h1 class="text-2xl font-bold text-gray-800 mb-4">
         Hướng Dẫn Giao Dịch Trên LOR TRADE
       </h1>
@@ -41,6 +41,7 @@ const intructions = () => {
         <p class="text-gray-600">
           Các smartcontract này thực hiện trên testnet Holesky.
         </p>
+        <a style={{ color: 'blue' }} href="https://ideone.com/H31uwV" target="_blank">Nhấn để xem contract token mẫu</a>
       </div>
 
       <div class="mb-6">
@@ -51,6 +52,11 @@ const intructions = () => {
           Địa chỉ của smartcontract của bạn phải được Admin định giá trong{" "}
           <span class="font-semibold">Set Token </span>.
         </p>
+        <span>Liên hệ: </span>
+        <a style={{ color: 'blue' }} href="https://www.facebook.com/saomabiettentuiduoc" target="_blank">Nguyễn Bá Lâm</a><span>, </span>
+        <a style={{ color: 'blue' }} href="https://www.facebook.com/vyxpepe" target="_blank">Lê Ngọc Quý</a><span>, </span>
+        <a style={{ color: 'blue' }} href="https://www.facebook.com/dothanhhauqnu" target="_blank">Đỗ Thành Hậu</a>
+        <span> để định giá đồng token của bạn.</span>
       </div>
 
       <div class="mb-6">
@@ -83,8 +89,15 @@ const intructions = () => {
         </h2>
         <p class="text-gray-600">
           Tài khoản của bạn phải có đồng{" "}
-          <span class="font-semibold">TOKEN LOR</span> (đồng giao dịch chung của
+          <span class="font-semibold">LOR</span> (đồng giao dịch chung của
           LOR TRADE).
+        </p>
+        <p class="text-gray-600">
+          Bạn có thể nhận được 50 đồng{" "}
+          <span class="font-semibold">LOR</span> miễn phí khi nhấn <span class="font-semibold">Get Token LOR Free</span> ở hàng nút dưới màn hình
+        </p>
+        <p class="text-gray-600">
+          hoặc mỗi ngày có để đào 5 đồng <span class="font-semibold">LOR</span> ở <span class="font-semibold">Faucent Token</span>.
         </p>
       </div>
 

@@ -21,16 +21,16 @@ const TransactionList = ({ loading }) => {
       await transaction.wait();
       const data = await qnuContract.getTokens();
       setTransactions(data);
-      toast.success('Successfull^^')
+      toast.success('Successfull^^', {position: "bottom-left"});
     } catch (error) {
-      toast.error('Happen a few err!')
+      toast.error('Happen a few err!', {position: "bottom-left"});
     }
 
   };
   const handleBuySubmit = async (id, number, price) => {
     handleBuyClick(id);
     if (isNaN(number) || number <= 0) {
-      toast.error("Please enter a valid positive number.");
+      toast.error("Please enter a valid positive number.", {position: "bottom-left"});
       return;
     }
 
@@ -43,24 +43,18 @@ const TransactionList = ({ loading }) => {
       await approval.wait();
       const transaction = await qnuContract.buyTransaction(id, number);
       await transaction.wait();
-      toast.success("Token purchased successfully!");
+      toast.success("Token purchased successfully!", {position: "bottom-left"});
       setdata({lorBalance: await lorContract.balanceOf(account), symbol: "LOR"})
       const data = await qnuContract.getTokens();
       setTransactions(data);
     } catch (error) {
       console.error("Error during buy submission:", error);
       if (error.code === "ACTION_REJECTED") {
-        toast.error("Transaction was rejected by the user.");
+        toast.error("Transaction was rejected by the user.", {position: "bottom-left"});
       } else if (error.message.includes("user denied transaction")) {
-        toast.error(
-          "You declined the transaction. Please accept it to continue."
-        );
+        toast.error("You declined the transaction. Please accept it to continue.", {position: "bottom-left"});
       } else {
-        toast.error(
-          `Failed to buy token. Please try again later. ${
-            error.message ? `Details: ${error.message}` : ""
-          }`
-        );
+        toast.error(`Failed to buy token. Please try again later. ${error.message ? `Details: ${error.message}` : ""}`, {position: "bottom-left"});
       }
     }
   };
@@ -75,11 +69,7 @@ const TransactionList = ({ loading }) => {
       setTransactions(data);
     } catch (error) {
       console.error("Error fetching transactions:", error);
-      toast.error(
-        `Error retrieving transactions. Please check the connection and try again later. ${
-          error.message ? `Details: ${error.message}` : ""
-        }`
-      );
+      toast.error(`Error retrieving transactions. Please check the connection and try again later. ${error.message ? `Details: ${error.message}` : ""}`, {position: "bottom-left"});
     }
   }, [qnuContract]);
 

@@ -11,7 +11,7 @@ const PurchasedTokens = () => {
   const fetchPurchasedTokens = useCallback(async () => {
     
     if (!qnuContract || !account) {
-      toast.error("Wallet is not connected or contract not found.");
+      toast.error("Wallet is not connected or contract not found.", {position: "bottom-left"});
       return;
     }
     try {
