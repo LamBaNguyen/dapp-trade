@@ -15,9 +15,9 @@ const Footer = () => {
         await lorContract.receiveTokenInit(account);
         setdata({lorBalance: await lorContract.balanceOf(account), symbol: "LOR"})
       }
-      toast.success('Succefull');
+      toast.success('Succefull', {position: "bottom-left"});
     } catch (error) {
-      toast.error(error)
+      toast.error(error, {position: "bottom-left"});
     }
   };
 
@@ -27,7 +27,7 @@ const Footer = () => {
 
   const handleImportLORToken = async () => {
     if (!lorContract) {
-      toast.error("LOR contract not initialized.");
+      toast.error("LOR contract not initialized.", {position: "bottom-left"});
       return;
     }
 
@@ -51,18 +51,18 @@ const Footer = () => {
       });
 
       if (wasAdded) {
-        toast.success("LOR Token added to wallet.");
+        toast.success("LOR Token added to wallet.", {position: "bottom-left"});
       } else {
-        toast.error("User rejected adding the token.");
+        toast.error("User rejected adding the token.", {position: "bottom-left"});
       }
     } catch (error) {
       console.error("Error adding token:", error);
-      toast.error("Error adding token. Please check the console.");
+      toast.error("Error adding token. Please check the console.", {position: "bottom-left"});
     }
   };
   const handleImportLQHToken = async () => {
     if (!lqhContract) {
-      toast.error("LQH contract not initialized.");
+      toast.error("LQH contract not initialized.", {position: "bottom-left"});
       return;
     }
 
@@ -86,21 +86,21 @@ const Footer = () => {
       });
 
       if (wasAdded) {
-        toast.success("LQH Token added to wallet.");
+        toast.success("LQH Token added to wallet.", {position: "bottom-left"});
       } else {
-        toast.error("User rejected adding the token.");
+        toast.error("User rejected adding the token.", {position: "bottom-left"});
       }
     } catch (error) {
       console.error("Error adding token:", error);
-      toast.error("Error adding token. Please check the console.");
+      toast.error("Error adding token. Please check the console.", {position: "bottom-left"});
     }
   };
   const handleAddNetwork = async () => {
     try {
       await addNetwork("web3");
-      toast.success("Holesky Test Network added successfully.");
+      toast.success("Holesky Test Network added successfully.", {position: "bottom-left"});
     } catch (error) {
-      toast.error(`Error adding Holesky network: ${error.message}`);
+      toast.error(`Error adding Holesky network: ${error.message}`, {position: "bottom-left"});
     }
   };
   return (

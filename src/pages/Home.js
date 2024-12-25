@@ -105,7 +105,7 @@ const Home = () => {
           }`}
           onClick={() => setActiveTab("demo")}
         >
-          Token
+          Faucent Token
         </li>
         <li
           className={`cursor-pointer p-2 mb-2 ${
