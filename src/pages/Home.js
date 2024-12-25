@@ -10,6 +10,7 @@ import History from "../components/History";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "../components/Footer";
+import Intructions from "../components/Instructions";
 
 const ElectionManagerAddress = "0xE29FFC79c032945a8e84b4E63c4B56C183fFF219";
 
@@ -68,70 +69,81 @@ const Home = () => {
   };
 
   return (
-    <div className="flex h-screen">
-      <ToastContainer />
-      {/* Sidebar */}
-      <div className="w-1/4 bg-gray-200 p-4">
-        <h2 className="text-lg font-bold mb-4">Menu</h2>
-        <ul>
-          <li
-            className={`cursor-pointer p-2 mb-2 ${
-              activeTab === "transactions" ? "bg-blue-500 text-white" : ""
-            }`}
-            onClick={() => setActiveTab("transactions")}
-          >
-            Transactions
-          </li>
-          <li
-            className={`cursor-pointer p-2 mb-2 ${
-              activeTab === "setToken" ? "bg-blue-500 text-white" : ""
-            }`}
-            onClick={() => setActiveTab("setToken")}
-          >
-            Set Token
-          </li>
-          <li
-            className={`cursor-pointer p-2 ${
-              activeTab === "tokenTrade" ? "bg-blue-500 text-white" : ""
-            }`}
-            onClick={() => setActiveTab("tokenTrade")}
-          >
-            Token Trade
-          </li>
-          <li
-            className={`cursor-pointer p-2 mb-2 ${
-              activeTab === "demo" ? "bg-blue-500 text-white" : ""
-            }`}
-            onClick={() => setActiveTab("demo")}
-          >
-            Token
-          </li><li
-            className={`cursor-pointer p-2 mb-2 ${
-              activeTab === "history" ? "bg-blue-500 text-white" : ""
-            }`}
-            onClick={() => setActiveTab("history")}
-          >
-            History
-          </li>
-        </ul>
-      </div>
-
-      {/* Main Content */}
-      <div className="w-3/4 p-4">
-        {activeTab === "transactions" && (
-          <TransactionList
-            handleBuy={handleBuy}
-            handleWithdraw={handleWithdraw}
-            loading={loading}
-          />
-        )}
-        {activeTab === "setToken" && <SetToken />}
-        {activeTab === "tokenTrade" && <TokenTrade />}
-        {activeTab === "demo" && <Demo />}
-        {activeTab === "history" && <History />}
-      </div>
-      <Footer/>
+    <div className="flex min-h-screen overflow-hidden">
+    <ToastContainer />
+    {/* Sidebar */}
+    <div className="w-1/5 bg-gray-200 p-4 overflow-auto">
+      <h2 className="text-lg font-bold mb-4">Menu</h2>
+      <ul>
+        <li
+          className={`cursor-pointer p-2 mb-2 ${
+            activeTab === "transactions" ? "bg-blue-500 text-white" : ""
+          }`}
+          onClick={() => setActiveTab("transactions")}
+        >
+          Transactions
+        </li>
+        <li
+          className={`cursor-pointer p-2 mb-2 ${
+            activeTab === "setToken" ? "bg-blue-500 text-white" : ""
+          }`}
+          onClick={() => setActiveTab("setToken")}
+        >
+          Set Token
+        </li>
+        <li
+          className={`cursor-pointer p-2 ${
+            activeTab === "tokenTrade" ? "bg-blue-500 text-white" : ""
+          }`}
+          onClick={() => setActiveTab("tokenTrade")}
+        >
+          Token Trade
+        </li>
+        <li
+          className={`cursor-pointer p-2 mb-2 ${
+            activeTab === "demo" ? "bg-blue-500 text-white" : ""
+          }`}
+          onClick={() => setActiveTab("demo")}
+        >
+          Token
+        </li>
+        <li
+          className={`cursor-pointer p-2 mb-2 ${
+            activeTab === "history" ? "bg-blue-500 text-white" : ""
+          }`}
+          onClick={() => setActiveTab("history")}
+        >
+          History
+        </li>
+        <li
+          className={`cursor-pointer p-2 mb-2 ${
+            activeTab === "intructions" ? "bg-blue-500 text-white" : ""
+          }`}
+          onClick={() => setActiveTab("intructions")}
+        >
+          Instructions
+        </li>
+      </ul>
     </div>
+  
+    {/* Main Content */}
+    <div className="w-4/5 p-4 overflow-auto">
+      {activeTab === "transactions" && (
+        <TransactionList
+          handleBuy={handleBuy}
+          handleWithdraw={handleWithdraw}
+          loading={loading}
+        />
+      )}
+      {activeTab === "setToken" && <SetToken />}
+      {activeTab === "tokenTrade" && <TokenTrade />}
+      {activeTab === "demo" && <Demo />}
+      {activeTab === "history" && <History />}
+      {activeTab === "intructions" && <Intructions />}
+    </div>
+    <Footer />
+  </div>
+  
   );
 };
 
